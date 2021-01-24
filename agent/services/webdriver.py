@@ -27,7 +27,7 @@ class WebDriverChrome():
     )
     buy_now_btn.click()
 
-    time.sleep(2)
+    time.sleep(5)
 
     try:
       sign_in = self.driver.find_element(By.XPATH, 
