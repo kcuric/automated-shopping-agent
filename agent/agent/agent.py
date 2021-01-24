@@ -1,4 +1,5 @@
 from agent.services import api
+from agent.services.webdriver import WebDriverChrome
 
 import spade
 import asyncio
@@ -10,10 +11,13 @@ class ShoppingAgent(spade.agent.Agent):
     assigned = False
 
     async def on_start(self):
+      self.webdriver = WebDriverChrome()
       print('Starting pooling ...')
 
     def buy_product(self, order):
-      print(order)
+      transaction = self.webdriver.run(order['productId']['url'])
+      api.complete_order(order['_id'], transaction)
+      self.assigned = False
 
     def check_for_open_orders(self):
       order = api.check_for_open_orders()

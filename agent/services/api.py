@@ -27,4 +27,16 @@ def assign_order(id):
     f'{configuration.SERVER_URL}{configuration.ENDPOINT}',
     data=json.dumps(data),
     headers=headers
-  )  
+  ) 
+
+def complete_order(id, transaction):
+  data = {
+    'filter': {'_id': id},
+    'data': transaction
+  }
+  headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+  response = requests.put(
+    f'{configuration.SERVER_URL}{configuration.ENDPOINT}',
+    data=json.dumps(data),
+    headers=headers
+  ) 

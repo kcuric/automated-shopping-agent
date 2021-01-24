@@ -9,6 +9,7 @@ aiohttp-jinja2 = "==1.3.0"
 spade = "*"
 requests = "*"
 python-decouple = "*"
+selenium = "*"
 
 [dev-packages]
 
